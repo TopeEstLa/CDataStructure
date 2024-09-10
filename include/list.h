@@ -34,7 +34,7 @@ List* createList();
  * Append a new node to the end of the list.
  * @param list the list to append to.
  * @param data the value of the new node.
- * @return index of the new node.
+ * @return index of the new node or -1 if the node was not added.
  */
 int append(List* list, void* data);
 

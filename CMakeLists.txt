@@ -9,4 +9,8 @@ include_directories(
 
 add_library(CDataStructure STATIC
         include/list.h
-        src/list.c)
+        src/list.c
+        test/listTest.c
+        include/stack.h
+        src/stack.c
+        test/stackTest.c)
