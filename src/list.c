@@ -17,7 +17,7 @@ int append(List *list, void *data) {
     if (list == NULL) return -1;
     if (data == NULL) return -1;
 
-    Node *newNode = malloc(sizeof(Node));
+    ListNode *newNode = malloc(sizeof(ListNode));
     if (newNode == NULL) {
         return -1;
     }
@@ -28,7 +28,7 @@ int append(List *list, void *data) {
     if (list->head == NULL) {
         list->head = newNode;
     } else {
-        Node *current = list->head;
+        ListNode *current = list->head;
         while (current->next != NULL) {
             current = current->next;
         }
@@ -43,7 +43,7 @@ bool prepend(List *list, void *data) {
     if (list == NULL) return false;
     if (data == NULL) return false;
 
-    Node *newNode = malloc(sizeof(Node));
+    ListNode *newNode = malloc(sizeof(ListNode));
     if (newNode == NULL) {
         return false;
     }
@@ -69,14 +69,14 @@ bool addAt(List *list, void *data, int index) {
         return prepend(list, data);
     }
 
-    Node *newNode = malloc(sizeof(Node));
+    ListNode *newNode = malloc(sizeof(ListNode));
     if (newNode == NULL) {
         return false;
     }
 
     newNode->data = data;
 
-    Node *current = list->head;
+    ListNode *current = list->head;
     for (int i = 0; i < index - 1; i++) {
         current = current->next;
     }
@@ -99,7 +99,7 @@ bool removeLast(List *list) {
         free(list->head);
         list->head = NULL;
     } else {
-        Node *current = list->head; // (1) (2) (3) //we want to check if the next node is the last
+        ListNode *current = list->head; // (1) (2) (3) //we want to check if the next node is the last
         while (current->next->next != NULL) {
             current = current->next;
         }
@@ -118,7 +118,7 @@ bool removeFirst(List *list) {
         return false; //nothing to remove here
     }
 
-    Node *temp = list->head;
+    ListNode *temp = list->head;
     list->head = list->head->next;
     free(temp);
 
@@ -137,12 +137,12 @@ bool removeAt(List *list, int index) {
         return removeFirst(list);
     }
 
-    Node *current = list->head;
+    ListNode *current = list->head;
     for (int i = 0; i < index - 1; i++) {
         current = current->next;
     }
 
-    Node *temp = current->next;
+    ListNode *temp = current->next;
     current->next = temp->next;
     free(temp);
 
@@ -157,7 +157,7 @@ void* get(List *list, int index) {
         return NULL;
     }
 
-    Node *current = list->head;
+    ListNode *current = list->head;
     for (int i = 0; i < index; i++) {
         current = current->next;
     }
@@ -173,7 +173,7 @@ List* reverseList(List *list) {
         return NULL;
     }
 
-    Node *current = list->head;
+    ListNode *current = list->head;
     while (current != NULL) {
         prepend(reversedList, current->data);
         current = current->next;
@@ -185,7 +185,7 @@ List* reverseList(List *list) {
 void printList(List *list) {
     if (list == NULL) return;
 
-    Node *current = list->head;
+    ListNode *current = list->head;
     printf("[ ");
     while (current != NULL) {
         printf("%d, ", *(int*)current->data);

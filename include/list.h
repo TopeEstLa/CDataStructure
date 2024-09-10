@@ -9,18 +9,18 @@
  * @param data the value of the node.
  * @param next a pointer to the next node.
  */
-typedef struct node {
+typedef struct list_node {
     void* data;
-    struct node* next;
-} Node;
+    struct list_node* next;
+} ListNode;
 
 /**
  * This structure represent a list containing the head of the list and the size of the list.
  * @param head a pointer to the first node of the list.
  * @param size the size of the list.
  */
-typedef struct list {
-    Node* head;
+typedef struct listTest {
+    ListNode* head;
     int size;
 } List;
 
